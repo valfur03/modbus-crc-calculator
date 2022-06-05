@@ -1,9 +1,10 @@
+#include <bitset>
 #include <cstddef>
 #include <iostream>
 
 int	main(int argc, char **argv)
 {
-	if (argc == 1)
+	if (argc != 2)
 		return 1;
 	const int			reflected_polynomial = 0xA001;	// This is the CRC polynomial,
 														// but reflected (the starting bits at the end).
@@ -22,6 +23,6 @@ int	main(int argc, char **argv)
 				CRC_register ^= reflected_polynomial;
 		}
 	}
-	std::cout << CRC_register << std::endl;
+	std::cout << std::bitset<16>(CRC_register) << std::endl;
 	return 0;
 }
